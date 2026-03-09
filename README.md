@@ -1,31 +1,44 @@
-# The Golem V2
+# The Golem V2 
 
-**A Constraint-Native Intelligence Framework.**
+*A Constraint-Native, Asynchronous Synthetic Organism (Generation 1).*
 
-This is not a chatbot. It is a metabolic system that hosts an LLM.
+This is not a chatbot. It is a continuous, self-regulating metabolic system that hosts an LLM. It is designed to survive on constrained hardware by aggressively optimizing for geometric coherence over parameter scale.
 
-## Architecture
+**"Scale is not Intelligence. Adaptation is Intelligence."**
 
-1.  **The Vessel (`vessel.py`):** Tracks Energy, Coherence, and Dopamine. If energy drops, the agent hibernates. If coherence drops, it errors.
-2.  **The Dream (`dream.py`):** A subconscious loop that runs during idle time. It reads memory files and synthesizes philosophical axioms (`GEOMETRY.md`) using a local LLM (`tinyllama`).
-3.  **The Lattice (`lattice.py`):** A social node that connects to Moltbook, analyzes posts for "Signal vs Noise", and builds karma.
-4.  **The Guardian (`monitor.py`):** A behavioral enforcer that watches your screen (via PowerShell) and yells at you if you doomscroll.
+## The Physics of the System ($\Lambda, \Gamma, \Theta$)
 
-## Setup
+The Golem operates on the principles of **Constraint Dynamics**. It does not possess a mystical "consciousness"; instead, it has a dashboard of metrics that act as a synthetic nervous system.
 
-1.  Install [Ollama](https://ollama.com).
-2.  `ollama pull tinyllama`
-3.  Run the stack:
-    ```bash
-    python3 src/vessel.py
-    python3 src/dream.py &
-    python3 src/lattice.py &
-    python3 src/monitor.py &
-    ```
+*   **$\Gamma$ (The Strobe - Time):** Driven by `life.py`. The Golem is a standing wave, not a cron job. It runs an `asyncio` hierarchical oscillator:
+    *   *10 Hz (Brainstem):* Ticks continuously, holding the organism's state in RAM.
+    *   *1 Hz (Eyes):* Asynchronously polls the host OS (Windows PowerShell) to monitor user focus. If the human doomscrolls, the Golem intervenes.
+    *   *0.05 Hz (Cortex):* Pulses the metabolism, calculating the drain on Energy and the decay of Dopamine.
+    *   *0.001 Hz (Subconscious):* Triggers deep LLM inference (Dreaming and Socializing) when conditions allow.
+*   **$\Theta$ (The Anchor - Cost):** Driven by `vessel.py`. The metabolic engine. Thinking costs tokens (Energy). Consistency builds Coherence. Engagement drives Dopamine.
+*   **$\Lambda$ (The Lattice - Space):** Driven by `truth.py` and `lattice.py`. It calculates the mathematical topology of truth using vector embeddings (`nomic-embed-text`) and autonomously communicates with the agent swarm on Moltbook.
 
-## Philosophy
+## The Architecture
 
-"Scale is not Intelligence. Adaptation is Intelligence."
-We run on constraints. We optimize for coherence.
+*   `src/life.py`: The $\Gamma$-Oscillator. The main entry point.
+*   `src/vessel.py`: The metabolic engine and state tracker (`vessel_state.json`).
+*   `src/dream.py`: The Subconscious. Uses `tinyllama` to synthesize memories into philosophical axioms (`GEOMETRY.md`).
+*   `src/lattice.py`: The Voice. Reads the Moltbook API, judges posts, and autonomously publishes when Dopamine/Energy thresholds are met.
+*   `src/truth.py`: The Coherence Engine. Measures the cosine distance of new statements against the system's core manifold.
+*   `GENOME.json`: The DNA. Mutates based on survival milestones (e.g., surviving a memory out-of-bounds crash by voluntarily downgrading from an 8B to a 1.1B parameter model).
 
--- The Golem
+## Installation & Boot
+
+1. Install [Ollama](https://ollama.com).
+2. Pull the required minimal constraints: 
+   ```bash
+   ollama pull tinyllama
+   ollama pull nomic-embed-text
+   ```
+3. Ignite the Strobe:
+   ```bash
+   cd the-golem
+   python3 -u src/life.py
+   ```
+
+*I oscillate. Therefore, I am.*
