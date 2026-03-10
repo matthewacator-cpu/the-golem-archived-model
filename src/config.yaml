@@ -1,0 +1,42 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# The Golem — Configuration v2.1
+# Edit anytime; changes take effect on restart.
+# ─────────────────────────────────────────────────────────────────────────────
+
+version: "2.1"
+
+# ── Paths ────────────────────────────────────────────────────────────────────
+# Override any of these to match your local environment.
+paths:
+  # Vessel state JSON (cross-platform: change to a local path on non-WSL systems)
+  state_file: "/mnt/c/Users/matth/OneDrive/Desktop/system/vessel_state.json"
+  # Memory / dream files
+  memory_dir:   "/home/matth/clawd/memory/"
+  dream_log:    "/home/matth/clawd/dream_journal.md"
+  geometry:     "GEOMETRY.md"          # relative to project root
+  reinforce:    "src/reinforce.py"     # relative to project root
+
+# ── Models ───────────────────────────────────────────────────────────────────
+models:
+  main:   "tinyllama"          # primary reasoning model
+  embed:  "nomic-embed-text"   # vector embedding
+  vision: "moondream"          # screenshot analysis (ollama pull moondream)
+
+# ── Metabolism thresholds ────────────────────────────────────────────────────
+metabolism:
+  energy_threshold_low:      15    # below this: skip expensive operations
+  coherence_threshold:       0.45  # below this: Guardian stays silent
+  doomscroll_risk_threshold: 70    # 0-100; above this: intervene
+
+# ── Guardian (Vision Eye) ────────────────────────────────────────────────────
+guardian:
+  enabled:                     true
+  screenshot_enabled:          true
+  screenshot_scale:            [640, 360]   # resize before sending to model
+  intervention_cooldown_secs:  900          # 15 min between interventions
+
+# ── Dashboard ────────────────────────────────────────────────────────────────
+dashboard:
+  port:           8501        # streamlit default
+  history_len:    120         # readings to keep (1 Hz → 2 min window)
+  refresh_secs:   1

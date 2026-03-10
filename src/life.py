@@ -4,6 +4,13 @@ import json
 import os
 import sys
 
+# ── Vision Guardian (optional — degrades gracefully if deps missing) ──────────
+try:
+    from guardian import Guardian as _Guardian
+    _GUARDIAN_AVAILABLE = True
+except ImportError:
+    _GUARDIAN_AVAILABLE = False
+
 # Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATE_FILE = '/mnt/c/Users/matth/OneDrive/Desktop/system/vessel_state.json'
@@ -24,6 +31,8 @@ class TheGolem:
         self.running = True
         self.last_window = ""
         self.coherence_wave = 0.0
+        # Vision Guardian — created here, fires as background tasks in brainstem
+        self.guardian = _Guardian() if _GUARDIAN_AVAILABLE else None
 
     async def brainstem_loop(self):
         """10Hz tick. 1Hz sensory sampling. (The fast Γ strobe)"""
@@ -60,6 +69,11 @@ class TheGolem:
                         
                 except Exception as e:
                     pass # Ignore sensory blips to maintain wave
+
+                # Vision Guardian pulse — fire-and-forget so it never blocks
+                # the brainstem. moondream may take ~1s; that's fine.
+                if self.guardian is not None:
+                    asyncio.create_task(self.guardian.pulse())
 
     async def cortex_loop(self):
         """0.05 Hz (20s). Metabolic integration and intervention."""
