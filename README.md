@@ -1,10 +1,10 @@
-# TheGolem
+# TheGolem Archived Model
 
-Constraint-native local AI runtime built around rhythm, energy, and coherence instead of raw scale.
+Archived constraint-native local AI model built around rhythm, energy, and coherence instead of raw scale.
 
 ## Overview
 
-TheGolem is an experimental Python system for running a continuously pulsing local agent. Rather than treating an assistant like a stateless request-response bot, this project models it as a small synthetic organism with:
+TheGolem is an archived experimental Python system for running a continuously pulsing local agent. Rather than treating an assistant like a stateless request-response bot, this project models it as a small synthetic organism with:
 
 - a timed execution loop
 - a mutable metabolic state
@@ -61,7 +61,7 @@ python3 -u src/life.py
 
 ## Current Status
 
-TheGolem is an active experimental codebase. It is useful as a concept demo, research sandbox, and architectural reference for constraint-based agent design, but it should not yet be treated as a production-ready framework.
+TheGolem is preserved here as an archived model. It remains useful as a concept demo, research sandbox, and architectural reference for constraint-based agent design, but it should be viewed as a historical snapshot rather than an actively maintained framework.
 
 ## Why This Repo Exists
 
